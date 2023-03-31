@@ -12,7 +12,7 @@ namespace atomic_dex
         g_second_primary_dex_coin,
         "VOTE2023",
         "KIP0001",
-        "BTC"
+        "BTC-segwit"
     };
     inline const std::vector<std::string> g_wallet_only_coins{
         "ARRR-BEP20",
@@ -20,17 +20,6 @@ namespace atomic_dex
         "NVC",
         "PAXG-ERC20",
         "USDT-ERC20",
-        "BET",
-        "BOTS",
-        "CRYPTO",
-        "DEX",
-        "HODL",
-        "JUMBLR",
-        "MGW",
-        "MSHARK",
-        "PANGEA",
-        "REVS",
-        "SUPERNET",
         "XPM",
         "KIP0001",
         "VOTE2023",
