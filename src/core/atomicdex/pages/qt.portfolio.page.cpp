@@ -82,17 +82,22 @@ namespace atomic_dex
         if (evt.with_update_model)
         {
             res = m_portfolio_mdl->update_currency_values();
+            SPDLOG_INFO("step 1");
             m_system_manager.get_system<wallet_page>().refresh_ticker_infos();
+            SPDLOG_INFO("step 2");
         }
 
         std::error_code ec;
         const auto&     config           = m_system_manager.get_system<settings_page>().get_cfg();
         const auto&     price_service    = m_system_manager.get_system<global_price_service>();
         auto            fiat_balance_std = price_service.get_price_in_fiat_all(config.current_currency, ec);
+        SPDLOG_INFO("step 3");
         if (!ec && res)
         {
             set_current_balance_fiat_all(QString::fromStdString(fiat_balance_std));
+            SPDLOG_INFO("step 4");
             m_portfolio_mdl->adjust_percent_current_currency(QString::fromStdString(fiat_balance_std));
+            SPDLOG_INFO("step 5");
         }
     }
 
