@@ -1,7 +1,6 @@
 name: AtomicDex-Desktop CI
 
 on:
-on:
   push:
     branches:
       - nogeo
