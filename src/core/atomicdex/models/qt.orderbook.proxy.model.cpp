@@ -167,7 +167,7 @@ namespace atomic_dex
                 {
                     return false;
                 }
-                if (is_cex_id_available && (rates > 100 || fiat_price <= 0 || ((safe_float(volume) < limit) && coin_info.coin_type != CoinType::SmartChain)))
+                if (is_cex_id_available && (fiat_price <= 0 || ((safe_float(volume) < limit) && coin_info.coin_type != CoinType::SmartChain)))
                 {
                     return false;
                 }
