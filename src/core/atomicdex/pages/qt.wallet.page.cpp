@@ -14,7 +14,7 @@
 #include "atomicdex/api/mm2/rpc.convertaddress.hpp"
 #include "atomicdex/api/mm2/rpc.electrum.hpp"
 #include "atomicdex/api/mm2/rpc.validate.address.hpp"
-#include "atomicdex/api/mm2/rpc.withdraw.hpp"
+#include "atomicdex/api/mm2/rpc2.withdraw.hpp"
 #include "atomicdex/api/mm2/rpc2.task.withdraw.init.hpp"
 #include "atomicdex/api/mm2/rpc2.task.withdraw.status.hpp"
 #include "atomicdex/services/mm2/mm2.service.hpp"
@@ -506,7 +506,7 @@ namespace atomic_dex
     }
 
     void
-    wallet_page::send(const QString& address, const QString& amount, bool max, bool with_fees, QVariantMap fees_data)
+    wallet_page::send(const QString& address, const QString& amount, bool max, bool with_fees, QVariantMap fees_data, const QString& memo)
     {
         //! Preparation
         this->set_send_busy(true);
@@ -517,7 +517,7 @@ namespace atomic_dex
 
         if (coin_info.is_zhtlc_family)
         {
-            t_withdraw_init_request withdraw_init_req{.coin = ticker, .to = address.toStdString(), .amount = max ? "0" : amount.toStdString(), .max = max};
+            t_withdraw_init_request withdraw_init_req{.coin = ticker, .to = address.toStdString(), .amount = max ? "0" : amount.toStdString(), .memo = memo.toStdString(), .max = max};
 
             if (with_fees)
             {
@@ -558,6 +558,7 @@ namespace atomic_dex
                             using namespace std::chrono_literals;
                             auto&              mm2_system = m_system_manager.get_system<mm2_service>();
                             static std::size_t z_nb_try      = 1;
+                            static std::size_t loop_limit    = 600;
                             nlohmann::json     z_error       = nlohmann::json::array();
                             nlohmann::json     z_batch_array = nlohmann::json::array();
                             QString            z_status;
@@ -574,7 +575,7 @@ namespace atomic_dex
                                 z_error = z_answers;
                                 z_status = QString::fromStdString(z_answers[0].at("result").at("status").get<std::string>());
 
-                                SPDLOG_DEBUG("[{}/120] Waiting for {} withdraw status [{}]...", z_nb_try, ticker, z_status.toUtf8().constData());
+                                SPDLOG_DEBUG("[{}/{}] Waiting for {} withdraw status [{}]...", z_nb_try, loop_limit, ticker, z_status.toUtf8().constData());
                                 if (z_status == "Ok")
                                 {
                                     break;
@@ -586,7 +587,7 @@ namespace atomic_dex
                                 std::this_thread::sleep_for(2s);
                                 z_nb_try += 1;
 
-                            } while (z_nb_try < 120);
+                            } while (z_nb_try < loop_limit);
 
                             try {
                                 if (z_error[0].at("result").at("details").contains("error"))
@@ -595,7 +596,7 @@ namespace atomic_dex
                                     z_status   = QString::fromStdString(z_error[0].at("result").at("details").at("error").get<std::string>());
                                     set_withdraw_status(z_status);
                                 }
-                                else if (z_nb_try == 120)
+                                else if (z_nb_try == loop_limit)
                                 {
                                     // TODO: Handle this case.
                                     // There could be no error message if scanning takes too long.
@@ -642,7 +643,6 @@ namespace atomic_dex
                                         j_out["withdraw_answer"]["fee_details"]["amount_fiat"] =
                                             global_price_system.get_price_as_currency_from_amount(current_fiat, coin_info.fees_ticker, fee);
                                     }
-                                    SPDLOG_DEBUG("zhtlc set_rpc_send_data (else)");
                                     this->set_rpc_send_data(nlohmann_json_object_to_qt_json_object(j_out));
                                     set_withdraw_status("Complete");
                                 }
@@ -686,7 +686,13 @@ namespace atomic_dex
         }
         else
         {
-            t_withdraw_request withdraw_req{.coin = ticker, .to = address.toStdString(), .amount = max ? "0" : amount.toStdString(), .max = max};
+            t_withdraw_request withdraw_req{
+                .coin = ticker,
+                .to = address.toStdString(),
+                .amount = max ? "0" : amount.toStdString(),
+                .memo = memo.toStdString(),
+                .max = max
+            };
 
             if (with_fees)
             {
