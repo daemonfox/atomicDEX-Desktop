@@ -1722,6 +1722,7 @@ namespace atomic_dex
     nlohmann::json mm2_service::prepare_batch_orderbook(bool is_a_reset)
     {
         SPDLOG_INFO("[prepare_batch_orderbook] is_a_reset: {}", is_a_reset);
+        SPDLOG_INFO("START prepare_batch_orderbook");
         auto&& [base, rel] = m_synchronized_ticker_pair.get();
         if (rel.empty())
             return nlohmann::json::array();
@@ -1743,11 +1744,13 @@ namespace atomic_dex
             generate_req("min_trading_vol", t_min_volume_request{.coin = rel});
         }
         // SPDLOG_INFO("batch max: {}", batch.dump(4));
+        SPDLOG_INFO("STOP prepare_batch_orderbook");
         return batch;
     }
 
     void mm2_service::process_orderbook(bool is_a_reset)
     {
+        SPDLOG_INFO("START process_orderbook");
         auto batch = prepare_batch_orderbook(is_a_reset);
         if (batch.empty())
             return;
@@ -1813,6 +1816,7 @@ namespace atomic_dex
                 }
             }
         };
+        SPDLOG_INFO("STOP process_orderbook");
 
         m_mm2_client.async_rpc_batch_standalone(batch)
             .then(answer_functor)
