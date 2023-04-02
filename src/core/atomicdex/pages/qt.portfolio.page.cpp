@@ -77,7 +77,6 @@ namespace atomic_dex
     portfolio_page::on_update_portfolio_values_event(const update_portfolio_values& evt)
     {
         SPDLOG_INFO("Updating portfolio values with model: {}", evt.with_update_model);
-        SPDLOG_INFO("START on_update_portfolio_values_event");
         bool res = true;
         if (evt.with_update_model)
         {
@@ -94,15 +93,12 @@ namespace atomic_dex
             set_current_balance_fiat_all(QString::fromStdString(fiat_balance_std));
             m_portfolio_mdl->adjust_percent_current_currency(QString::fromStdString(fiat_balance_std));
         }
-        SPDLOG_INFO("STOP on_update_portfolio_values_event");
     }
 
     QStringList
     atomic_dex::portfolio_page::get_all_enabled_coins() const
     {
-        SPDLOG_INFO("START get_all_enabled_coins");
         return get_all_coins_by_type("All");
-        SPDLOG_INFO("STOP get_all_enabled_coins");
     }
 
     QStringList
@@ -140,9 +136,7 @@ namespace atomic_dex
     void
     portfolio_page::on_coin_cfg_parsed(const coin_cfg_parsed& evt)
     {
-        SPDLOG_INFO("START on_coin_cfg_parsed");
         this->m_global_cfg_mdl->initialize_model(evt.cfg);
-        SPDLOG_INFO("STOP on_coin_cfg_parsed");
     }
 
     void
