@@ -1,6 +1,6 @@
 #include <nlohmann/json.hpp>
 
-#include "rcp2.enable_erc20.hpp"
+#include "rpc2.enable_erc20.hpp"
 
 namespace atomic_dex::mm2
 {
