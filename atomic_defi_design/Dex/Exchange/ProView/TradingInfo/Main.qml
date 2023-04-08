@@ -12,7 +12,7 @@ import "../../ProView"
 
 Widget
 {
-    width: 495
+    width: 580
     property alias currentIndex: tabView.currentIndex
 
     title: qsTr("Trading Information")
@@ -67,7 +67,7 @@ Widget
         Layout.fillHeight: true
         color: Dex.CurrentTheme.floatingBackgroundColor
         radius: 10
-        Layout.preferredWidth: 495
+        Layout.preferredWidth: 580
 
         Qaterial.SwipeView
         {
@@ -90,7 +90,7 @@ Widget
                     Layout.leftMargin: 10
                     Layout.rightMargin: 10
                     Layout.fillHeight: true
-                    Layout.minimumWidth: 470
+                    Layout.minimumWidth: 555
                     Layout.minimumHeight: 200
                 }
 
