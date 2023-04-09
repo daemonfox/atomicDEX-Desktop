@@ -105,7 +105,7 @@ Item
             id: center
             width: parent.width
             anchors.top: top.bottom
-            anchors.topMargin: 69.5
+            anchors.topMargin: 62
             onLineSelected:
             {
                 if (currentLineType === lineType)
