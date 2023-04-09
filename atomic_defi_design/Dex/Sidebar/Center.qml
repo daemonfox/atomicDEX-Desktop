@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import QtQuick.Layouts 1.2
 
+import AtomicDEX.TradingMode 1.0
 import App 1.0
 import "../Components"
 import "../Constants"
@@ -89,7 +90,10 @@ MouseArea
             type: Main.LineType.DEX
             label.text: isExpanded ? qsTr("DEX") : ""
             icon.source: General.image_path + "menu-exchange-white.svg"
-            onClicked: lineSelected(type)
+            onClicked: {
+                API.app.trading_pg.current_trading_mode = TradingMode.Pro
+                lineSelected(type)
+            }
         }
 
         FigurativeLine
