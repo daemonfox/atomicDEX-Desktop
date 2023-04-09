@@ -18,13 +18,6 @@ import "../../../Constants"
 // Simple/Pro toggle group
 Item
 {
-    // property var proViewChart
-    property var proViewTickerSelectors
-    property var proViewTrInfo
-    property var proViewOrderBook
-    property var proViewBestOrders
-    property var proViewPlaceOrderForm
-
     Item
     {
         width: 350
