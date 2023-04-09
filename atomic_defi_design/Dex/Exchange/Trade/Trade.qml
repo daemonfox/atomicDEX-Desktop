@@ -162,19 +162,6 @@ Item
         anchors.leftMargin: 20
         anchors.rightMargin: 20
 
-        TradeViewHeader
-        {
-            id: header
-            width: parent.width
-            height: parent.height * 0.06
-
-            proViewTickerSelectors: proView.tickerSelectors
-            proViewTrInfo: proView.trInfo
-            proViewOrderBook: proView.orderBook
-            proViewBestOrders: proView.bestOrders
-            proViewPlaceOrderForm: proView.placeOrderForm
-        }
-
         ProView
         {
             id: proView
