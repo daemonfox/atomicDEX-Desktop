@@ -35,7 +35,7 @@ Item
     }
 
     property var currentPage: Dashboard.PageType.Portfolio
-    property var availablePages: [portfolio, wallet, exchange, addressbook]
+    property var availablePages: [portfolio, wallet, exchange_pro, exchange_simple, addressbook]
 
     property alias webEngineView: webEngineView
 
@@ -156,14 +156,14 @@ Item
 
         Component
         {
-            id: exchange
+            id: exchange_pro
 
             Exchange {}
         }
 
         Component
         {
-            id: exchange
+            id: exchange_simple
 
             Exchange {}
         }
