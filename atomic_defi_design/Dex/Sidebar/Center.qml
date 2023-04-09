@@ -27,7 +27,8 @@ MouseArea
             {
                 _portfolioLine.label.opacity = 0;
                 _walletLine.label.opacity = 0;
-                _dexLine.label.opacity = 0;
+                _dexproLine.label.opacity = 0;
+                _dexsimpleLine.label.opacity = 0;
                 _addressBookLine.label.opacity = 0;
                 _fiatLine.label.opacity = 0;
             }
@@ -37,7 +38,7 @@ MouseArea
     NumberAnimation
     {
         id: waitForSidebarExpansionAnimation
-        targets: [_portfolioLine.label, _walletLine.label, _dexLine.label, _addressBookLine.label, _fiatLine.label]
+        targets: [_portfolioLine.label, _walletLine.label, _dexproLine.label, _dexsimpleLine.label, _addressBookLine.label, _fiatLine.label]
         properties: "opacity"
         duration: 200
         from: 0
@@ -48,7 +49,7 @@ MouseArea
     NumberAnimation
     {
         id: labelsOpacityAnimation
-        targets: [_portfolioLine.label, _walletLine.label, _dexLine.label, _addressBookLine.label, _fiatLine.label]
+        targets: [_portfolioLine.label, _walletLine.label, _dexproLine.label, _dexsimpleLine.label, _addressBookLine.label, _fiatLine.label]
         properties: "opacity"
         duration: 350
         from: 0.0
@@ -84,14 +85,28 @@ MouseArea
 
         FigurativeLine
         {
-            id: _dexLine
+            id: _dexproLine
 
             Layout.fillWidth: true
             type: Main.LineType.DEX
-            label.text: isExpanded ? qsTr("DEX") : ""
+            label.text: isExpanded ? qsTr("DEX Pro") : ""
             icon.source: General.image_path + "menu-exchange-white.svg"
             onClicked: {
                 API.app.trading_pg.current_trading_mode = TradingMode.Pro
+                lineSelected(type)
+            }
+        }
+
+        FigurativeLine
+        {
+            id: _dexsimpleLine
+
+            Layout.fillWidth: true
+            type: Main.LineType.DEX
+            label.text: isExpanded ? qsTr("DEX Simple") : ""
+            icon.source: General.image_path + "menu-exchange-white.svg"
+            onClicked: {
+                API.app.trading_pg.current_trading_mode = TradingMode.Simple
                 lineSelected(type)
             }
         }
