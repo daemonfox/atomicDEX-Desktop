@@ -290,7 +290,7 @@ namespace atomic_dex
 
         if (s_coins_status >= 15s)
         {
-            SPDLOG_INFO("Starting coin status loop (5s)");
+            SPDLOG_INFO("Starting coin status loop (15s)");
             if (m_nb_update_required > 0)
             {
                 auto                     coins = this->get_enabled_coins();
