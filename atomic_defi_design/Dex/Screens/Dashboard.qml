@@ -30,7 +30,8 @@ Item
     {
         Portfolio,
         Wallet,
-        DEX,            // DEX == Trading page
+        DEXPro,
+        DEXSimple,
         Addressbook
     }
 
@@ -85,7 +86,7 @@ Item
 
     onCurrentPageChanged: {
         sidebar.currentLineType = currentPage
-        if (currentPage == Dashboard.PageType.DEX)
+        if ((currentPage == Dashboard.PageType.DEXPro) || (currentPage == Dashboard.PageType.DEXSimple))
         {
             API.app.trading_pg.set_pair(true, api_wallet_page.ticker)
         }

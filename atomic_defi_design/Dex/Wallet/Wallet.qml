@@ -7,6 +7,7 @@ import "../Components"
 import "../Constants"
 import "../Screens"
 import App 1.0
+import AtomicDEX.TradingMode 1.0
 
 RowLayout
 {
@@ -23,7 +24,11 @@ RowLayout
     // Local
     function onClickedSwap()
     {
-        dashboard.switchPage(Dashboard.PageType.DEX)
+        if (API.app.trading_pg.current_trading_mode == TradingMode.Pro) {
+            dashboard.switchPage(Dashboard.PageType.DEXPro)
+        } else {
+            dashboard.switchPage(Dashboard.PageType.DEXSimple)
+        }
         dashboard.current_ticker = api_wallet_page.ticker
         API.app.trading_pg.set_pair(true, api_wallet_page.ticker)
     }

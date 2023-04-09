@@ -11,6 +11,7 @@ import "../Constants"
 import App 1.0
 import "../Components"
 import "../Screens"
+import AtomicDEX.TradingMode 1.0
 
 DexPopup
 {
@@ -77,7 +78,11 @@ DexPopup
                 app.pageLoader.item.switchPage(Dashboard.PageType.Wallet)
                 break
             case "open_swaps_page":
-                app.pageLoader.item.switchPage(Dashboard.PageType.DEX)
+                if (API.app.trading_pg.current_trading_mode == TradingMode.Pro) {
+                    app.pageLoader.item.switchPage(Dashboard.PageType.DEXPro)
+                } else {
+                    app.pageLoader.item.switchPage(Dashboard.PageType.DEXSimple)
+                }
                 break
             case "open_log_modal":
                 showError(notification.getTitle(), notification.long_message)
