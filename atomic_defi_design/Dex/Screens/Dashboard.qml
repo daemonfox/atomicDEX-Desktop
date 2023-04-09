@@ -163,6 +163,13 @@ Item
 
         Component
         {
+            id: exchange
+
+            Exchange {}
+        }
+
+        Component
+        {
             id: addressbook
 
             Addressbook.Main { }
