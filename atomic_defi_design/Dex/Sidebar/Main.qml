@@ -105,7 +105,7 @@ Item
             id: center
             width: parent.width
             anchors.top: top.bottom
-            anchors.topMargin: 62
+            anchors.topMargin: 50
             onLineSelected:
             {
                 if (currentLineType === lineType)
@@ -120,7 +120,7 @@ Item
             id: bottom
             width: parent.width
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 62
+            anchors.bottomMargin: 50
 
             onSettingsClicked: root.settingsClicked()
             onSupportClicked: root.supportClicked()
