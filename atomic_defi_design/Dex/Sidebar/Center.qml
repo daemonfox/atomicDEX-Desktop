@@ -88,7 +88,7 @@ MouseArea
             id: _dexproLine
 
             Layout.fillWidth: true
-            type: Main.LineType.DEX
+            type: Main.LineType.DEXpro
             label.text: isExpanded ? qsTr("DEX Pro") : ""
             icon.source: General.image_path + "menu-exchange-white.svg"
             onClicked: {
@@ -102,7 +102,7 @@ MouseArea
             id: _dexsimpleLine
 
             Layout.fillWidth: true
-            type: Main.LineType.DEX
+            type: Main.LineType.DEXsimple
             label.text: isExpanded ? qsTr("DEX Simple") : ""
             icon.source: General.image_path + "menu-exchange-white.svg"
             onClicked: {

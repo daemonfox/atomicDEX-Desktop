@@ -12,7 +12,8 @@ Item
     {
         Portfolio,
         Wallet,
-        DEX,         // DEX == Trading page
+        DEXpro,
+        DEXsimple,
         Addressbook,
         Support
     }
