@@ -24,9 +24,12 @@ RowLayout
     // Local
     function onClickedSwap()
     {
-        if (API.app.trading_pg.current_trading_mode == TradingMode.Pro) {
+        if (API.app.trading_pg.current_trading_mode == TradingMode.Pro)
+        {
             dashboard.switchPage(Dashboard.PageType.DEXPro)
-        } else {
+        }
+        else
+        {
             dashboard.switchPage(Dashboard.PageType.DEXSimple)
         }
         dashboard.current_ticker = api_wallet_page.ticker

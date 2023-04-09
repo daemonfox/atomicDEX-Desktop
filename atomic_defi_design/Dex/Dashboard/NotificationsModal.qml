@@ -78,9 +78,12 @@ DexPopup
                 app.pageLoader.item.switchPage(Dashboard.PageType.Wallet)
                 break
             case "open_swaps_page":
-                if (API.app.trading_pg.current_trading_mode == TradingMode.Pro) {
+                if (API.app.trading_pg.current_trading_mode == TradingMode.Pro)
+                {
                     app.pageLoader.item.switchPage(Dashboard.PageType.DEXPro)
-                } else {
+                }
+                else
+                {
                     app.pageLoader.item.switchPage(Dashboard.PageType.DEXSimple)
                 }
                 break
