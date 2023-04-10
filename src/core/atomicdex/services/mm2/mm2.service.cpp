@@ -320,9 +320,9 @@ namespace atomic_dex
             m_orderbook_clock = std::chrono::high_resolution_clock::now();
         }
 
-        if (s_info >= 31s)
+        if (s_info >= 37s)
         {
-            SPDLOG_INFO("Starting fetch infos loop (31s)");
+            SPDLOG_INFO("Starting fetch infos loop (37s)");
             fetch_infos_thread();
             m_info_clock = std::chrono::high_resolution_clock::now();
         }
