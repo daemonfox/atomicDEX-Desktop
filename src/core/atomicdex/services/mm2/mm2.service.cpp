@@ -288,9 +288,9 @@ namespace atomic_dex
         const auto s_coins_status      = std::chrono::duration_cast<std::chrono::seconds>(now - m_coin_status_clock);
         const auto s_info              = std::chrono::duration_cast<std::chrono::seconds>(now - m_info_clock);
 
-        if (s_coins_status >= 15s)
+        if (s_coins_status >= 17s)
         {
-            SPDLOG_INFO("Starting coin status loop (15s)");
+            SPDLOG_INFO("Starting coin status loop (17s)");
             if (m_nb_update_required > 0)
             {
                 auto                     coins = this->get_enabled_coins();
@@ -312,17 +312,17 @@ namespace atomic_dex
             }
             m_coin_status_clock = std::chrono::high_resolution_clock::now();
         }
-        if (s_orderbook >= 10s)
+        if (s_orderbook >= 11s)
         {
-            SPDLOG_INFO("Starting orderbook loop (10s)");
+            SPDLOG_INFO("Starting orderbook loop (11s)");
             fetch_current_orderbook_thread(false);
             batch_fetch_orders_and_swap();
             m_orderbook_clock = std::chrono::high_resolution_clock::now();
         }
 
-        if (s_info >= 30s)
+        if (s_info >= 31s)
         {
-            SPDLOG_INFO("Starting fetch infos loop (30s)");
+            SPDLOG_INFO("Starting fetch infos loop (31s)");
             fetch_infos_thread();
             m_info_clock = std::chrono::high_resolution_clock::now();
         }
