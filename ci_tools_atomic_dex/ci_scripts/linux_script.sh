@@ -25,6 +25,7 @@ sudo apt-get install build-essential \
                     libxcb-keysyms1-dev \
                     libxcb-render-util0-dev \
                     libxcb-xinerama0 \
+                    libfuse2 \
                     git -y
                     
 # get llvm
