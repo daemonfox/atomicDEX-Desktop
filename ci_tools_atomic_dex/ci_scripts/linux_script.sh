@@ -7,7 +7,7 @@ sudo add-apt-repository "deb http://de.archive.ubuntu.com/ubuntu focal-updates m
 sudo add-apt-repository "deb http://de.archive.ubuntu.com/ubuntu focal-security main restricted universe multiverse"
 sudo add-apt-repository "deb http://de.archive.ubuntu.com/ubuntu focal-backports main restricted universe multiverse"
 sudo apt-get update
-sudo ACCEPT_EULA=Y apt-get dist-upgrade -y
+sudo ACCEPT_EULA=Y apt-get dist-upgrade -y -t focal-backports
 # base deps
 sudo apt-get install build-essential \
                     libgl1-mesa-dev \
