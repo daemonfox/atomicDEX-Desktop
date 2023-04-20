@@ -2,8 +2,12 @@
 
 sudo apt-get update  # prevents repo404 errors on apt-remove below
 sudo apt-get remove php* msodbcsql17 mysql*
+sudo add-apt-repository "deb http://de.archive.ubuntu.com/ubuntu focal main restricted universe multiverse"
+sudo add-apt-repository "deb http://de.archive.ubuntu.com/ubuntu focal-updates main restricted universe multiverse"
+sudo add-apt-repository "deb http://de.archive.ubuntu.com/ubuntu focal-security main restricted universe multiverse"
+sudo add-apt-repository "deb http://de.archive.ubuntu.com/ubuntu focal-backports main restricted universe multiverse"
 sudo apt-get update
-sudo ACCEPT_EULA=Y apt-get upgrade -y
+sudo ACCEPT_EULA=Y apt-get dist-upgrade -y
 # base deps
 sudo apt-get install build-essential \
                     libgl1-mesa-dev \
@@ -26,7 +30,7 @@ sudo apt-get install build-essential \
                     libxcb-render-util0-dev \
                     libxcb-xinerama0 \
                     libfuse2 \
-                    git -y
+                    git -y -t focal-backports
                     
 # get llvm
 wget https://apt.llvm.org/llvm.sh
