@@ -63,7 +63,7 @@ if (APPLE)
             URL http://54.170.62.22:8000/dev/mm2_e041dbb-mac-x86-64.zip)
 elseif (UNIX AND NOT APPLE)
     FetchContent_Declare(mm2
-            URL http://54.170.62.22:8000/dev/mm2_e62426e-linux-x86-64.zip)
+            URL http://54.170.62.22:8000/posv-test/mm2_16e814d-linux-x86-64.zip)
 else ()
     FetchContent_Declare(mm2
             URL https://github.com/KomodoPlatform/atomicDEX-API/releases/download/v1.0.1-beta/mm2-6bb79b3d8-Win64.zip)
