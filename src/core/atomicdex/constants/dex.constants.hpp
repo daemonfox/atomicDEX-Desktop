@@ -12,6 +12,13 @@ namespace atomic_dex
         g_second_primary_dex_coin,
         "BTC-segwit"
     };
+    inline const std::vector<std::string> g_faucet_coins{
+        "DOC",
+        "MARTY",
+        "RICK",
+        "MORTY",
+        "ZOMBIE",
+    };
     inline const std::vector<std::string> g_wallet_only_coins{
         "ARRR-BEP20",
         "RBTC",
