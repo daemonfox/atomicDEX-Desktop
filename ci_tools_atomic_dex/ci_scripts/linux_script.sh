@@ -7,10 +7,9 @@ sudo add-apt-repository "deb http://de.archive.ubuntu.com/ubuntu focal-updates m
 sudo add-apt-repository "deb http://de.archive.ubuntu.com/ubuntu focal-security main restricted universe multiverse"
 sudo add-apt-repository "deb http://de.archive.ubuntu.com/ubuntu focal-backports main restricted universe multiverse"
 sudo apt-get update
-sudo ACCEPT_EULA=Y apt-get dist-upgrade -y -t focal-backports
+#sudo ACCEPT_EULA=Y apt-get dist-upgrade -y -t focal-backports
 # base deps
 sudo apt-get install build-essential \
-                    libstdc++6=10-20200418-1ubuntu1 \
                     libgl1-mesa-dev \
                     ninja-build \
                     curl \
