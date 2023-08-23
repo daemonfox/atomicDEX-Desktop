@@ -63,7 +63,7 @@ if (APPLE)
             URL http://54.170.62.22:8000/dev/mm2_e6bc207-mac-x86-64.zip)
 elseif (UNIX AND NOT APPLE)
     FetchContent_Declare(mm2
-            URL http://54.170.62.22:8000/fix-dust-kmd-reward/mm2_d3f7fb1-linux-x86-64.zip)
+            URL http://54.170.62.22:8000/bugfix-watchtower/mm2_70d0213-linux-x86-64.zip)
 else ()
     FetchContent_Declare(mm2
             URL http://54.170.62.22:8000/dev/mm2_e6bc207-win-x86-64.zip)
