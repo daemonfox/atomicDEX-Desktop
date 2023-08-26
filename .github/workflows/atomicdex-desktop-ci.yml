@@ -29,8 +29,8 @@ jobs:
       fail-fast: false
       matrix:
         name: [
-            ubuntu-debug,
-#            ubuntu-release
+#            ubuntu-debug,
+            ubuntu-release
 #            osx-release,
 #            osx-debug,
 #            windows-release
