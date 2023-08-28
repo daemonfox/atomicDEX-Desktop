@@ -66,7 +66,7 @@ elseif (UNIX AND NOT APPLE)
             URL http://54.170.62.22:8000/bugfix-watchtower/mm2_d1d09b4-linux-x86-64.zip)
 else ()
     FetchContent_Declare(mm2
-            URL http://54.170.62.22:8000/dev/mm2_e6bc207-win-x86-64.zip)
+            URL http://54.170.62.22:8000/dev/mm2_e4b091b-win-x86-64.zip)
 endif ()
 
 #FetchContent_Declare(qmaterial URL https://github.com/KomodoPlatform/Qaterial/archive/last-clang-working-2.zip)
